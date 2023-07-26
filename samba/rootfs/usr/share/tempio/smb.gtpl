@@ -46,7 +46,18 @@
    veto files = /{{ .veto_files | join "/" }}/
    delete veto files = {{ eq (len .veto_files) 0 | ternary "no" "yes" }}
 
-[ssl]
+[share]
+   browseable = yes
+   writeable = yes
+   path = /share
+
+   valid users = {{ .username }}
+   force user = root
+   force group = root
+   veto files = /{{ .veto_files | join "/" }}/
+   delete veto files = {{ eq (len .veto_files) 0 | ternary "no" "yes" }}
+
+[mnt]
    browseable = yes
    writeable = yes
    path = /ssl
